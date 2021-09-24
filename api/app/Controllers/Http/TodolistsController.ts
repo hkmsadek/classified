@@ -11,11 +11,7 @@ export default class TodolistsController {
        return Todolist.create(obj)
     }
     async getAllToDo(){
-        let allTasks = await Todolist.query().select('id', 'task_name', 'is_done')
-        return {
-           msg : 'sucess',
-           data : allTasks
-        }
+        return Todolist.query().select('id', 'task_name', 'is_done')
     }
     async getSingleListItem({params} : HttpContextContract){
       return Todolist.query().where('id', params.id).first()
